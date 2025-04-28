@@ -1,19 +1,3 @@
-Got it — you want a **complete README.md** that covers **everything** we are planning:
-
-- Project description ✅
-- Tech stack ✅
-- Local setup ✅
-- How to run ✅
-- Folder structure ✅
-- Future features ✅
-- License ✅
-- Clean, copy-paste ready ✅
-
----
-
-# 📄 Here’s your FULL "All-in-One" `README.md`:
-
-```markdown
 # WeBuild 🚀
 
 > A collaborative platform for developers to team up and build GitHub projects together.
@@ -55,31 +39,6 @@ Team members can collaborate by tracking commits, viewing pull requests, and com
 
 ---
 
-## 📦 Project Folder Structure
-```
-
-/src
-/app
-/api
-/auth [...nextauth] # GitHub OAuth endpoints
-/projects # Project creation, listing
-/members # Members system (join/invite)
-/webhooks # GitHub webhooks
-/dashboard # User dashboard
-/project/[id] # Single project page
-/components # Reusable UI components
-/hooks # Custom React hooks
-/lib # Utilities (Prisma, GitHub API helpers)
-/styles
-/public
-/prisma
-schema.prisma # Prisma database schema
-.env # Environment variables
-
-````
-
----
-
 ## 🚀 Local Setup Instructions
 
 Follow these steps to run WeBuild locally:
@@ -89,7 +48,7 @@ Follow these steps to run WeBuild locally:
 ```bash
 git clone https://github.com/your-username/we-build.git
 cd we-build
-````
+```
 
 2. **Install dependencies**
 
@@ -153,50 +112,3 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
   [GitHub](https://github.com/kotiyalashwin) | [LinkedIn](https://linkedin.com/in/ashwin-kotiyal) | [Email](mailto:ashwinkotiyal07@gmail.com)
 
 ---
-
-## 📄 License
-
-This project is licensed under the **MIT License**.
-
-```markdown
-MIT License
-
-Copyright (c) 2025 Ashwin Kotiyal
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-[License text continues...]
-```
-
----
-
-> "Great projects are built by great teams — let's build together with WeBuild!" 🚀
-
----
-
-```
-
-✅ **This README is 100% copy-paste ready** into your GitHub repo.
-
----
-
-# 📢 So now:
-
-- Initialize project using `pnpm` ✅
-- Push it to GitHub ✅
-- Add this README ✅
-
----
-
-Once you finish,
-👉 just tell me "**Done, what's next?**"
-and we will immediately continue to **Prisma + Database Setup** (super easy with me guiding). 🚀
-
-Ready? 💬
-(If yes, copy-paste this README and let's go!)
-```
