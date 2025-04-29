@@ -8,5 +8,5 @@ export default async function ({ children }: { children: React.ReactNode }) {
     redirect("/api/auth/signin");
   }
 
-  return <div>{children}</div>;
+  return <div> {children}</div>;
 }

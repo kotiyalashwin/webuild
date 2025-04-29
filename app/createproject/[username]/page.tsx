@@ -1,3 +1,4 @@
+import { AllRepo } from "@/components/allrepo";
 import { ByURL } from "@/components/byurl";
 import {
   Card,
@@ -32,6 +33,9 @@ export default async function ({
               </TabsList>
               <TabsContent value="url">
                 <ByURL />
+              </TabsContent>
+              <TabsContent value="all">
+                <AllRepo />
               </TabsContent>
             </Tabs>
           </CardContent>
