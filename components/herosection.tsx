@@ -5,13 +5,9 @@ import { useRouter } from "next/navigation";
 export const HeroSection = () => {
   const router = useRouter();
   return (
-    <motion.div
-      initial={{ filter: "blur(10px)" }}
-      animate={{ filter: "blur(0px)" }}
-      transition={{ ease: "easeIn", duration: 0.5 }}
-    >
-      <div className="absolute w-full h-screen inset-0 hero-bg Z-0 " />
-      <div className="absolute inset-0 h-screen w-full hero-gradient opacity-75 Z-10 " />
+    <div>
+      {/* <div className="absolute w-full h-screen inset-0 opacity-35 hero-bg Z-0 " />
+      <div className="absolute inset-0 h-screen w-full hero-gradient opacity-75 Z-10 " /> */}
 
       <div className="relative w-full h-screen flex items-center justify-center">
         <div className="max-w-7xl h-screen flex flex-col justify-evenly ">
@@ -22,7 +18,12 @@ export const HeroSection = () => {
               <p>Info</p>
             </div>
           </div>
-          <div className="container h-full flex flex-col items-center justify-center">
+          <motion.div
+            initial={{ filter: "blur(10px)" }}
+            animate={{ filter: "blur(0px)" }}
+            transition={{ ease: "easeIn", duration: 0.5 }}
+            className="container h-full flex flex-col items-center justify-center"
+          >
             <h1 className="text-neutral-400 text-center ">#neveralone</h1>
             <h1 className="text-5xl text-center">
               Build together with CrackedDevs
@@ -35,13 +36,13 @@ export const HeroSection = () => {
                 router.push("/signin");
               }}
               variant={"outline"}
-              className="mt-4 text-orange-400 text-lg"
+              className="mt-4 text-orange-400 text-lg animate-bounce repeat-2"
             >
               Let's Build
             </Button>
-          </div>
+          </motion.div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
