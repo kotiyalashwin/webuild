@@ -9,12 +9,7 @@ import {
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-export default async function ({
-  params,
-}: {
-  params: Promise<{ username: string }>;
-}) {
-  const { username } = await params;
+export default async function () {
   return (
     <div className="flex justify-center items-center">
       <div className="container max-w-3xl py-10">

@@ -1,10 +1,9 @@
-"use client";
-
-import { redirect } from "next/navigation";
-import { useEffect } from "react";
+import Link from "next/link";
 
 export default function () {
-  useEffect(() => {
-    redirect("/");
-  }, []);
+  return (
+    <div>
+      <Link href={"/"}>Got to home</Link>
+    </div>
+  );
 }
