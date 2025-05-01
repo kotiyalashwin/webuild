@@ -9,10 +9,10 @@ export const HeroSection = () => {
       initial={{ filter: "blur(10px)" }}
       animate={{ filter: "blur(0px)" }}
       transition={{ ease: "easeIn", duration: 0.5 }}
-      className="relative"
     >
       <div className="absolute w-full h-screen inset-0 hero-bg Z-0 " />
       <div className="absolute inset-0 h-screen w-full hero-gradient opacity-75 Z-10 " />
+
       <div className="relative w-full h-screen flex items-center justify-center">
         <div className="max-w-7xl h-screen flex flex-col justify-evenly ">
           <div className="  flex justify-center mt-4 ">
