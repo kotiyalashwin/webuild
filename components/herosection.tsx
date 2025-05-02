@@ -11,13 +11,18 @@ export const HeroSection = () => {
 
       <div className="relative w-full h-screen flex items-center justify-center">
         <div className="max-w-7xl h-screen flex flex-col justify-evenly ">
-          <div className="  flex justify-center mt-4 ">
+          <motion.div
+            initial={{ y: 10, opacity: 0, filter: "blur(10px)" }}
+            animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
+            transition={{ delay: 1 }}
+            className="  flex justify-center mt-4 "
+          >
             <div className=" flex justify-evenly  py-4 w-[55%] rounded-2xl">
               <p>Home</p>
               <p>About</p>
               <p>Info</p>
             </div>
-          </div>
+          </motion.div>
           <motion.div
             initial={{ filter: "blur(10px)" }}
             animate={{ filter: "blur(0px)" }}

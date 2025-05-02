@@ -1,61 +1,84 @@
 import { signOut } from "@/utils/auth";
 import { Button } from "./ui/button";
-import { LogOut } from "lucide-react";
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarHeader,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+} from "./ui/sidebar";
+import {
+  Code2,
+  Home,
+  HomeIcon,
+  LogOut,
+  Settings,
+  User,
+  Users,
+} from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { queryOptions } from "@tanstack/react-query";
 
 const navigations = [
   {
     href: "/profile",
     name: "Profile",
+    icon: <User className="text-orange-400 " />,
   },
   {
     href: "profile/createproject/kotiyalashwin",
     name: "Projects",
+    icon: <Code2 className="text-orange-400 text-xl" />,
   },
   {
-    href: "/account",
-    name: "Account",
+    href: "/community",
+    name: "Community",
+    icon: <Users className="text-orange-400 text-xl" />,
   },
 ];
 
-export const Sidebar = () => {
+export const AppSidebar = () => {
   return (
-    <div className="h-screen flex flex-col gap-y-10 py-4 px-2 border-r-2 border-orange-400">
-      <h1 className="text-center text-3xl text-orange-400">#WeBuild </h1>
-      <div className="flex flex-col items-center justify-evenly gap-y-8">
-        {navigations.map((option, i) => {
-          const isActive = false;
-          return (
-            <Link
-              className={` ${
-                isActive
-                  ? "bg-orange-500 text-white"
-                  : "hover:bg-orange-500 transition-all ease-in"
-              } rounded-4xl px-4 py-2 border-2 w-full`}
-              key={i}
-              href={option.href}
-            >
-              {option.name}
-            </Link>
-          );
-        })}
-
-        {/* <Link href={"/"}>Profile</Link>
-        <Link href={"/createproject/kotiyalashwin"}>Projects</Link>
-        <Link href={"/account"}>Account</Link> */}
-      </div>
-      <div className="flex items-center justify-center space-x-4">
-        <LogOut />
-        <form
-          action={async () => {
-            "use server";
-            await signOut();
-          }}
-        >
-          <Button> Logout</Button>
-        </form>
-      </div>
-    </div>
+    <Sidebar
+      variant="sidebar"
+      className="border-r  drop-shadow-amber-600 drop-shadow-md"
+    >
+      <SidebarHeader className="px-4 border-b  flex items-center">
+        <div>
+          <div className="flex items-center ">
+            <span className="text-orange-400 text-2xl">#</span>
+            <span className="text-2xl">WebBuild</span>
+          </div>
+        </div>
+      </SidebarHeader>
+      <SidebarContent className="py-4 ">
+        <SidebarMenu className="flex flex-col items-center gap-4 ">
+          {navigations.map((option, i) => (
+            <SidebarMenuItem key={i} className="w-full ">
+              <SidebarMenuButton className="py-4 text-lg " asChild>
+                <Link href={option.href} className="flex items-center gap-2">
+                  <span className="text-lg">{option.icon}</span> {option.name}
+                </Link>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          ))}
+        </SidebarMenu>
+      </SidebarContent>
+      <SidebarFooter className="p-4 border-t">
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton asChild>
+              <Link href="/account" className="flex items-center">
+                <Settings className="mr-2 h-4 w-4" />
+                <span>Settings</span>
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </SidebarFooter>
+    </Sidebar>
   );
 };

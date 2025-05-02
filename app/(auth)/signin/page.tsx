@@ -20,7 +20,7 @@ export default async function () {
                 <form
                   action={async () => {
                     "use server";
-                    await signIn("github", redirect("/profile"));
+                    await signIn("github", { redirectTo: "/profile" });
                   }}
                 >
                   <Button className="bg-orange-400 text-white">
