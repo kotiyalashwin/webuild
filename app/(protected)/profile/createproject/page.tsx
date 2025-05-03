@@ -25,7 +25,7 @@ export default async function () {
           <CardContent>
             <Tabs defaultValue="url">
               <TabsList className="w-full">
-                <TabsTrigger value="url">Enter Repository URL</TabsTrigger>
+                <TabsTrigger value="url">Enter Repository name</TabsTrigger>
                 <TabsTrigger value="all">Select Repository</TabsTrigger>
               </TabsList>
               <TabsContent value="url">

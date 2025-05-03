@@ -5,7 +5,7 @@ import React from "react";
 export default function ({ children }: { children: React.ReactNode }) {
   return (
     <SidebarProvider>
-      <div className="absolute w-full h-screen inset-0 opacity-35 hero-bg z-0 " />
+      <div className="absolute w-full h-screen inset-0 opacity-65 hero-bg z-0 " />
       <div className="md:grid md:grid-cols-[auto_1fr] gap-0 w-screen z-10">
         {/* Sidebar */}
         <div className="hidden md:block z-10">

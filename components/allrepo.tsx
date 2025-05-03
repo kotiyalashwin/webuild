@@ -2,7 +2,13 @@
 
 import { useState } from "react";
 import { Button } from "./ui/button";
-import { AlertCircle, Ellipsis, Loader2, RefreshCw } from "lucide-react";
+import {
+  AlertCircle,
+  ChevronRight,
+  Ellipsis,
+  Loader2,
+  RefreshCw,
+} from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
 
 import axios from "axios";
@@ -24,7 +30,6 @@ interface Repository {
 
 export const AllRepo = ({ user }: { user: string | undefined }) => {
   const [selectedRepo, setSelectedRepo] = useState<string | null>(null);
-
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<null | string>(null);
   const [repositories, setRepositories] = useState<Repository[]>([]);
@@ -137,24 +142,19 @@ export const AllRepo = ({ user }: { user: string | undefined }) => {
             </RadioGroup>
           </ScrollArea>
 
-          <Button>Create Project</Button>
-          {/* <Button
-            onClick={createProjectFromSelection}
-            className="w-full"
-            disabled={!selectedRepo || creatingProject}
-          >
-            {creatingProject ? (
-              <>
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Creating Project...
-              </>
-            ) : (
-              <>
-                Create Project from Selected Repository
-                <ChevronRight className="ml-2 h-4 w-4" />
-              </>
-            )}
-          </Button> */}
+          {/* <Button>Create Project</Button> */}
+          {selectedRepo && (
+            <Button
+              onClick={() => {
+                localStorage.setItem("repoUrl", selectedRepo);
+              }}
+              className="w-full"
+              disabled={!selectedRepo}
+            >
+              Create Project from Selected Repository
+              <ChevronRight className="ml-2 h-4 w-4" />
+            </Button>
+          )}
         </div>
       ) : loading ? (
         <div className="flex h-[300px] items-center justify-center rounded-md border">
