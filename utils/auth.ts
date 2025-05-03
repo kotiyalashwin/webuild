@@ -4,11 +4,8 @@ import GitHub from "next-auth/providers/github";
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
     GitHub({
-      clientId: process.env.AUTH_GITHUB_ID,
-      clientSecret: process.env.AUTH_GITHUB_SECRET,
-
       profile(raw) {
-        // console.log(raw);
+        console.log(raw);
         return {
           email: raw.email,
           githubId: raw.id.toString(),
@@ -18,6 +15,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       },
     }),
   ],
+  debug: true,
   callbacks: {
     async signIn({ user }) {
       if (!user?.githubId) return false;

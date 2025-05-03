@@ -26,7 +26,7 @@ export const HeroSection = () => {
           <motion.div
             initial={{ filter: "blur(10px)" }}
             animate={{ filter: "blur(0px)" }}
-            transition={{ ease: "easeIn", duration: 0.5 }}
+            transition={{ ease: "easeIn", duration: 0.25 }}
             className="container h-full flex flex-col items-center justify-center"
           >
             <h1 className="text-neutral-400 text-center ">#neveralone</h1>
@@ -38,7 +38,7 @@ export const HeroSection = () => {
             </p>
             <Button
               onClick={() => {
-                router.push("/signin");
+                router.push("/profile");
               }}
               variant={"outline"}
               className="mt-4 text-orange-400 text-lg animate-bounce repeat-2"

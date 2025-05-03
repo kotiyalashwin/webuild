@@ -42,10 +42,7 @@ const navigations = [
 
 export const AppSidebar = () => {
   return (
-    <Sidebar
-      variant="sidebar"
-      className="border-r  drop-shadow-amber-600 drop-shadow-md"
-    >
+    <Sidebar className="border-r  bg-pink  drop-shadow-amber-600 drop-shadow-md">
       <SidebarHeader className="px-4 border-b  flex items-center">
         <div>
           <div className="flex items-center ">
