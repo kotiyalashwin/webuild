@@ -21,6 +21,7 @@ model User {
   email         String?  @unique
   image         String?
   githubId      String   @unique
+  githubUsername String @unique
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
   projects      Project[]

@@ -11,6 +11,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           githubId: raw.id.toString(),
           image: raw.avatar_url,
           name: raw.name,
+          githubUsername: raw.login.toString(),
         };
       },
     }),
@@ -25,6 +26,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         const name = user.name;
         const email = user.email;
         const image = user.image;
+        const username = user.githubUsername;
 
         const existingUser = await prisma.user.findUnique({
           where: { githubId },
@@ -37,6 +39,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
               name,
               email,
               image,
+              githubUsername: username,
             },
           });
         }
@@ -52,6 +55,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           },
         });
         token.accessToken = user.githubId;
+        token.githubUsername = user.githubUsername;
         token.id = dbuser?.id;
       }
       return token;
@@ -60,6 +64,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       if (token) {
         session.user.id = token.id as string;
         session.user.githubId = token.accessToken;
+        session.user.githubUsername = token.githubUsername;
       }
       return session;
     },

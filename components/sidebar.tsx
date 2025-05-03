@@ -14,6 +14,7 @@ import {
   Home,
   HomeIcon,
   LogOut,
+  MessageSquare,
   Settings,
   User,
   Users,
@@ -25,13 +26,13 @@ import { queryOptions } from "@tanstack/react-query";
 const navigations = [
   {
     href: "/profile",
-    name: "Profile",
+    name: "Dashboard",
     icon: <User className="text-orange-400 " />,
   },
   {
     href: "profile/createproject/kotiyalashwin",
-    name: "Projects",
-    icon: <Code2 className="text-orange-400 text-xl" />,
+    name: "Requests",
+    icon: <MessageSquare className="text-orange-400 text-xl" />,
   },
   {
     href: "/community",
@@ -47,7 +48,9 @@ export const AppSidebar = () => {
         <div>
           <div className="flex items-center ">
             <span className="text-orange-400 text-2xl">#</span>
-            <span className="text-2xl">WebBuild</span>
+            <Link href={"/"} className="text-2xl">
+              WebBuild
+            </Link>
           </div>
         </div>
       </SidebarHeader>

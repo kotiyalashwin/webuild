@@ -4,6 +4,7 @@ import { Label } from "./ui/label";
 import { ChevronRight } from "lucide-react";
 
 export const ByURL = async () => {
+  const handleRepositoySelect = () => {};
   return (
     <form>
       <div className="space-y-4">
@@ -24,6 +25,7 @@ export const ByURL = async () => {
         <Button
           type="submit"
           className="w-full"
+          // onClick={handleRepositoySelect}
           // disabled={!repoUrl || creatingProject}
         >
           {/* {creatingProject ? (
@@ -37,7 +39,7 @@ export const ByURL = async () => {
               <ChevronRight className="ml-2 h-4 w-4" />
             </>
           )} */}
-          Create Project
+          Select this repository
           <ChevronRight />
         </Button>
       </div>

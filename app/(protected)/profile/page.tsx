@@ -90,7 +90,7 @@ export default async function () {
               <span className="tracking-wider">Projects </span>
             </div>
             <Button className="bg-stone-800 text-xl text-white hover:bg-[#1a1a1a] hover:text-orange-400">
-              <Link href={"/profile/createproject/kotiyalashwin"}>New +</Link>
+              <Link href={"/profile/createproject"}>New +</Link>
             </Button>
           </div>
           <div className="container bg-stone-950 w-full p-4">

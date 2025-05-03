@@ -4,7 +4,7 @@ import React from "react";
 
 export default async function ({ children }: { children: React.ReactNode }) {
   const session = await auth();
-  console.log(session);
+  // console.log(session);
   if (!session) {
     redirect("/signin");
   } else {

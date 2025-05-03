@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Button } from "./ui/button";
 import { AlertCircle, Ellipsis, Loader2, RefreshCw } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
-import { useParams } from "next/navigation";
+
 import axios from "axios";
 import { Label } from "@radix-ui/react-label";
 import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
@@ -22,19 +22,25 @@ interface Repository {
   language: string;
 }
 
-export const AllRepo = () => {
+export const AllRepo = ({ user }: { user: string | undefined }) => {
   const [selectedRepo, setSelectedRepo] = useState<string | null>(null);
-  const params = useParams();
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<null | string>(null);
   const [repositories, setRepositories] = useState<Repository[]>([]);
 
+  const handleRepositorySelect = (repoFullName: string) => {
+    setSelectedRepo(repoFullName);
+  };
+
   const fetchRepositories = async () => {
     try {
       setLoading(true);
-
+      if (!user) {
+        setError("No username");
+      }
       const response = await axios.get(
-        `https://api.github.com/users/${params.username}/repos`
+        `https://api.github.com/users/${user}/repos`
       );
 
       const data = await response.data;
@@ -82,7 +88,7 @@ export const AllRepo = () => {
           <ScrollArea className="h-[300px] rounded-md border">
             <RadioGroup
               value={selectedRepo || ""}
-              // onValueChange={handleRepositorySelect}
+              onValueChange={handleRepositorySelect}
               className="p-1"
             >
               {repositories.map((repo) => (
