@@ -101,7 +101,7 @@ export const AllRepo = ({ user }: { user: string | undefined }) => {
                   key={repo.id}
                   className={`mb-2 rounded-lg border p-3 transition-colors ${
                     selectedRepo === repo.full_name
-                      ? "border-primary bg-muted"
+                      ? "border-orange-400 bg-muted"
                       : ""
                   }`}
                 >
@@ -159,8 +159,8 @@ export const AllRepo = ({ user }: { user: string | undefined }) => {
       ) : loading ? (
         <div className="flex h-[300px] items-center justify-center rounded-md border">
           <div className="text-center">
-            <Loader2 className="mx-auto h-8 w-8 animate-spin text-muted-foreground" />
-            <p className="mt-2 text-sm text-muted-foreground">
+            <Loader2 className="mx-auto h-8 w-8 animate-spin  text-orange-400" />
+            <p className="mt-2 text-sm text-orange-400">
               Fetching your repositories...
             </p>
           </div>

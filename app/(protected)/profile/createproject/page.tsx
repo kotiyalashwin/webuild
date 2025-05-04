@@ -15,7 +15,7 @@ export default async function () {
   return (
     <div className="flex justify-center items-center">
       <div className="container max-w-3xl py-10">
-        <Card>
+        <Card className=" bg-black/5 backdrop-blur-lg">
           <CardHeader>
             <CardTitle className="text-2xl">What you wanna build?</CardTitle>
             <CardDescription>

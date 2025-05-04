@@ -43,8 +43,8 @@ const navigations = [
 
 export const AppSidebar = () => {
   return (
-    <Sidebar className="border-r  bg-pink  drop-shadow-amber-600 drop-shadow-md">
-      <SidebarHeader className="px-4 border-b  flex items-center">
+    <Sidebar className="bg-stone-950 border-r border-orange-400 " side="left">
+      <SidebarHeader className="px-4 border-b  bg-transparent flex items-center">
         <div>
           <div className="flex items-center ">
             <span className="text-orange-400 text-2xl">#</span>
@@ -54,7 +54,7 @@ export const AppSidebar = () => {
           </div>
         </div>
       </SidebarHeader>
-      <SidebarContent className="py-4 ">
+      <SidebarContent className="py-4  bg-transparent">
         <SidebarMenu className="flex flex-col items-center gap-4 ">
           {navigations.map((option, i) => (
             <SidebarMenuItem key={i} className="w-full ">

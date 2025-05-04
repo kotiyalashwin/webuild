@@ -1,3 +1,4 @@
+import { QuickOptions } from "@/components/quicoptions";
 import { Button } from "@/components/ui/button";
 import {
   PopoverTrigger,
@@ -42,46 +43,7 @@ const notifications = [
 export default async function () {
   return (
     <div className="py-4 w-full">
-      <div className="flex justify-end pr-4">
-        <div className="bg-stone-950 py-2 px-4 rounded-2xl flex items-center gap-8">
-          <Popover>
-            <PopoverTrigger asChild>
-              <Button className="bg-stone-950 text-white hover:text-background">
-                <Bell />
-              </Button>
-            </PopoverTrigger>
-            <PopoverContent>
-              <div className="space-y-4">
-                {notifications.map((not, i) => {
-                  if (i < 3) {
-                    return (
-                      <div
-                        key={i}
-                        className="border border-orange-400/55 rounded-lg px-4 py-2"
-                      >
-                        <span className="text-neutral-400 text-sm">
-                          {not.topic}
-                        </span>
-                        <p className="text-md">{not.message}</p>
-                        <span className="text-neutral-400 text-[12px] ">
-                          {not.from}
-                        </span>
-                      </div>
-                    );
-                  }
-                })}
-              </div>
-              {notifications.length > 3 && (
-                <div className="underline text-sm text-center mt-2 underline-offset-2">
-                  See More
-                </div>
-              )}
-            </PopoverContent>
-          </Popover>
-          <MessagesSquare />
-          <User />
-        </div>
-      </div>
+      {/* <QuickOptions /> */}
       <div className="flex justify-center mt-10 px-4 ">
         <div className="w-full max-w-5xl flex flex-col gap-8">
           <div className="flex w-full items-center justify-between  ">
@@ -90,7 +52,10 @@ export default async function () {
               <span className="tracking-wider">Projects </span>
             </div>
             <Button className="bg-stone-800 text-xl text-white hover:bg-[#1a1a1a] hover:text-orange-400">
-              <Link href={"/profile/createproject"}>New +</Link>
+              <Link href={"/profile/createproject"} className="w-full">
+                {" "}
+                New +
+              </Link>
             </Button>
           </div>
           <div className="container bg-stone-950 w-full p-4">
