@@ -13,34 +13,26 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-
-import { Bell, MessagesSquare, User } from "lucide-react";
+import { Projects } from "@/types/project";
+import { auth } from "@/utils/auth";
+import { prisma } from "@/utils/db";
+import { Users } from "lucide-react";
 import Link from "next/link";
 
-const notifications = [
-  {
-    topic: "Example",
-    message: "This is notificaion",
-    from: "this is from me",
-  },
-  {
-    topic: "Example",
-    message: "This is notificaion",
-    from: "this is from me",
-  },
-  {
-    topic: "Example",
-    message: "This is notificaion",
-    from: "this is from me",
-  },
-  {
-    topic: "Example",
-    message: "This is notificaion",
-    from: "this is from me",
-  },
-];
-
 export default async function () {
+  const session = await auth();
+  const githubId = session?.user.githubId;
+
+  const Projects: Projects[] = await prisma.project.findMany({
+    where: {
+      ownerId: githubId,
+    },
+    select: {
+      name: true,
+      githubURL: true,
+      members: true,
+    },
+  });
   return (
     <div className="py-4 w-full">
       {/* <QuickOptions /> */}
@@ -68,39 +60,22 @@ export default async function () {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                <TableRow className="group">
-                  <TableCell className="font-medium border-l-2 border-transparent group-hover:border-orange-400 transition-colors py-4">
-                    First-Project
-                  </TableCell>
-                  <TableCell className="border-transparent group-hover:border-orange-400 transition-colors py-4">
-                    https://github.com/kotiyalashwin/hehe
-                  </TableCell>
-                  <TableCell className="border-r-2 border-transparent group-hover:border-orange-400 transition-colors py-4">
-                    3
-                  </TableCell>
-                </TableRow>
-                <TableRow className="group">
-                  <TableCell className="font-medium border-l-2 border-transparent group-hover:border-orange-400 transition-colors py-4">
-                    First-Project
-                  </TableCell>
-                  <TableCell className="border-transparent group-hover:border-orange-400 transition-colors py-4">
-                    https://github.com/kotiyalashwin/hehe
-                  </TableCell>
-                  <TableCell className="border-r-2 border-transparent group-hover:border-orange-400 transition-colors py-4">
-                    3
-                  </TableCell>
-                </TableRow>
-                <TableRow className="group">
-                  <TableCell className="font-medium border-l-2 border-transparent group-hover:border-orange-400 transition-colors py-4">
-                    First-Project
-                  </TableCell>
-                  <TableCell className="border-transparent group-hover:border-orange-400 transition-colors py-4">
-                    https://github.com/kotiyalashwin/hehe
-                  </TableCell>
-                  <TableCell className="border-r-2 border-transparent group-hover:border-orange-400 transition-colors py-4">
-                    3
-                  </TableCell>
-                </TableRow>
+                {Projects.map((proj, i) => (
+                  <TableRow key={i} className="group">
+                    <TableCell className="font-medium border-l-2 border-transparent group-hover:border-orange-400 transition-colors py-4">
+                      {proj.name}
+                    </TableCell>
+                    <TableCell className="border-transparent group-hover:border-orange-400 transition-colors py-4">
+                      <Link target="_blank_" href={proj.githubURL}>
+                        {proj.githubURL}
+                      </Link>
+                    </TableCell>
+                    <TableCell className="border-r-2 border-transparent items-center gap-4 group-hover:border-orange-400 transition-colors py-4 flex">
+                      <span className="text-lg">{proj.members}</span>
+                      <Users size={20} />
+                    </TableCell>
+                  </TableRow>
+                ))}
               </TableBody>
             </Table>
           </div>

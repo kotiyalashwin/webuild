@@ -8,6 +8,7 @@ import { ChevronRight, Loader } from "lucide-react";
 
 import { RepoExist } from "@/lib/actions/repoexist";
 import { toast } from "sonner";
+import Link from "next/link";
 
 export const ByURL = () => {
   const [repoName, setRepoName] = useState<string>("");
@@ -55,7 +56,13 @@ export const ByURL = () => {
           </p>
           {verified ? (
             <Button type="button" className="mt-4 w-full">
-              Continue <ChevronRight className="ml-2 h-4 w-4" />
+              <Link
+                className="w-full flex justify-center"
+                href={"/profile/newproject"}
+              >
+                Create Project from Selected Repository{" "}
+                <ChevronRight className="ml-2 h-4 w-4" />
+              </Link>
             </Button>
           ) : (
             <Button

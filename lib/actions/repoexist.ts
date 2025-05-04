@@ -6,7 +6,6 @@ import axios from "axios";
 export const RepoExist = async (repoName: string) => {
   const session = await auth();
   const username = session?.user.githubUsername;
-  console.log(username);
 
   try {
     const response = await axios.get(
@@ -18,12 +17,14 @@ export const RepoExist = async (repoName: string) => {
         },
       }
     );
-    const data = await response.data();
+
+    const data = await response.data;
     if (response.status !== 200) {
-      return { message: "", status: false };
+      return { message: "not 200", status: false };
     }
-    return { message: `https://github.com/data.full_name `, status: true };
-  } catch {
-    return { message: "", staus: false };
+    return { message: `https://github.com/${data.full_name} `, status: true };
+  } catch (e) {
+    console.log(e);
+    return { message: "error", staus: false };
   }
 };

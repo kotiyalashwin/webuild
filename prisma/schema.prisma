@@ -31,15 +31,14 @@ model Project{
   id      String @id @default(cuid())
   ownerId String
   name    String
-  githubRepo String
   githubURL String
   description String?
-  stars       Int @default(0)
+  members Int @default(0)
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
 
 
-  owner   User  @relation(fields: [ownerId],references: [id])
+  owner   User  @relation(fields: [ownerId],references: [githubId])
 
   @@index([ownerId])
 }

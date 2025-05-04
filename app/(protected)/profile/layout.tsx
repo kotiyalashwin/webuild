@@ -1,12 +1,9 @@
 import { AppSidebar } from "@/components/sidebar";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-
 import React from "react";
-
-import { Button } from "@/components/ui/button";
 import { QuickOptions } from "@/components/quicoptions";
 
-export default function ({ children }: { children: React.ReactNode }) {
+export default async function ({ children }: { children: React.ReactNode }) {
   return (
     <>
       <div className="absolute w-full h-screen inset-0 opacity-30 hero-bg z-0 " />

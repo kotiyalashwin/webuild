@@ -3,9 +3,10 @@ import {
   Popover,
   PopoverContent,
 } from "@/components/ui/popover";
-import { Bell, Menu, MessagesSquare, User } from "lucide-react";
+import { Bell, LogOut, Menu, MessagesSquare, User } from "lucide-react";
 import { Button } from "./ui/button";
 import { SidebarTrigger } from "./ui/sidebar";
+import { signOut } from "@/utils/auth";
 
 const notifications = [
   {
@@ -71,7 +72,24 @@ export const QuickOptions = ({ className }: { className?: string }) => {
           </PopoverContent>
         </Popover>
         <MessagesSquare />
-        <User />
+        <Popover>
+          <PopoverTrigger asChild>
+            <User className="cursor-pointer" />
+          </PopoverTrigger>
+          <PopoverContent>
+            <div
+              onClick={async () => {
+                "use server";
+                await signOut();
+              }}
+              className="flex items-center gap-4 cursor-pointer"
+            >
+              <LogOut />
+              <span>LogOut</span>
+            </div>
+          </PopoverContent>
+        </Popover>
+
         <SidebarTrigger className="w-12 md:hidden h-12 px-0 py-0 text-2xl bg-orange-500 text-white rounded-xl " />
       </div>
     </div>

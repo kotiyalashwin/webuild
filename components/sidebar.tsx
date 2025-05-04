@@ -22,6 +22,7 @@ import {
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { queryOptions } from "@tanstack/react-query";
+import { toast } from "sonner";
 
 const navigations = [
   {
@@ -69,12 +70,25 @@ export const AppSidebar = () => {
       </SidebarContent>
       <SidebarFooter className="p-4 border-t">
         <SidebarMenu>
-          <SidebarMenuItem>
+          {/* <SidebarMenuItem>
             <SidebarMenuButton asChild>
               <Link href="/account" className="flex items-center">
                 <Settings className="mr-2 h-4 w-4" />
                 <span>Settings</span>
               </Link>
+            </SidebarMenuButton>
+          </SidebarMenuItem> */}
+          <SidebarMenuItem>
+            <SidebarMenuButton
+              onClick={async () => {
+                "use server";
+                await signOut({ redirectTo: "/" });
+                toast.success("Logged Out");
+              }}
+              asChild
+            >
+              {/* <LogOut /> */}
+              LogOut
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>

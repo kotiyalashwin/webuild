@@ -10,12 +10,12 @@ import {
   RefreshCw,
 } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
+import Link from "next/link";
 
 import axios from "axios";
 import { Label } from "@radix-ui/react-label";
 import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
 import { ScrollArea } from "./ui/scroll-area";
-import { useQuery } from "@tanstack/react-query";
 
 interface Repository {
   id: number;
@@ -146,13 +146,21 @@ export const AllRepo = ({ user }: { user: string | undefined }) => {
           {selectedRepo && (
             <Button
               onClick={() => {
-                localStorage.setItem("repoUrl", selectedRepo);
+                localStorage.setItem(
+                  "repoUrl",
+                  `https://github.com/${selectedRepo}`
+                );
               }}
               className="w-full"
               disabled={!selectedRepo}
             >
-              Create Project from Selected Repository
-              <ChevronRight className="ml-2 h-4 w-4" />
+              <Link
+                className="w-full flex justify-center"
+                href={"/profile/newproject"}
+              >
+                Create Project from Selected Repository{" "}
+                <ChevronRight className="ml-2 h-4 w-4" />
+              </Link>
             </Button>
           )}
         </div>
